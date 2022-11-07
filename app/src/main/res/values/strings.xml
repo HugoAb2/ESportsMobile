@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ESportsMobile</string>
+    <string name="welcome_message">Seja bem vindo ao nosso Aplicativo, venha se conectar no mundo de E-Sports com a gente</string>
+    <string name="login">Login</string>
+</resources>
