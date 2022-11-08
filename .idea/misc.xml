@@ -3,8 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/hugoc/Documents/Software Engenier/Desenvolvimento Mobile/ESportsMobile/app/src/main/res/drawable/bg_boxcountainer.xml" value="0.1625" />
+        <entry key="..\:/Users/hugoc/Documents/Software Engenier/Desenvolvimento Mobile/ESportsMobile/app/src/main/res/drawable/bg_button.xml" value="0.1625" />
+        <entry key="..\:/Users/hugoc/Documents/Software Engenier/Desenvolvimento Mobile/ESportsMobile/app/src/main/res/drawable/bg_edittext.xml" value="0.1625" />
+        <entry key="..\:/Users/hugoc/Documents/Software Engenier/Desenvolvimento Mobile/ESportsMobile/app/src/main/res/drawable/bg_tablayout.xml" value="0.1625" />
+        <entry key="..\:/Users/hugoc/Documents/Software Engenier/Desenvolvimento Mobile/ESportsMobile/app/src/main/res/drawable/container_components.xml" value="0.1625" />
+        <entry key="..\:/Users/hugoc/Documents/Software Engenier/Desenvolvimento Mobile/ESportsMobile/app/src/main/res/drawable/edit_text.xml" value="0.1625" />
         <entry key="..\:/Users/hugoc/Documents/Software Engenier/Desenvolvimento Mobile/ESportsMobile/app/src/main/res/drawable/gradient_background.xml" value="0.1625" />
+        <entry key="..\:/Users/hugoc/Documents/Software Engenier/Desenvolvimento Mobile/ESportsMobile/app/src/main/res/layout/activity_login.xml" value="0.225" />
         <entry key="..\:/Users/hugoc/Documents/Software Engenier/Desenvolvimento Mobile/ESportsMobile/app/src/main/res/layout/activity_main.xml" value="0.225" />
+        <entry key="..\:/Users/hugoc/Documents/Software Engenier/Desenvolvimento Mobile/ESportsMobile/app/src/main/res/layout/fragment_fullscreen.xml" value="0.225" />
+        <entry key="..\:/Users/hugoc/Documents/Software Engenier/Desenvolvimento Mobile/ESportsMobile/app/src/main/res/layout/fragment_login.xml" value="0.225" />
+        <entry key="..\:/Users/hugoc/Documents/Software Engenier/Desenvolvimento Mobile/ESportsMobile/app/src/main/res/layout/fragment_sing_in.xml" value="0.25" />
+        <entry key="..\:/Users/hugoc/Documents/Software Engenier/Desenvolvimento Mobile/ESportsMobile/app/src/main/res/layout/fragment_sing_up.xml" value="0.25" />
       </map>
     </option>
   </component>
