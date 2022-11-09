@@ -2,16 +2,10 @@ package com.example.esportsmobile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.ImageButton
-import android.widget.Spinner
-import androidx.core.os.bundleOf
-import androidx.viewbinding.ViewBinding
-import com.example.esportsmobile.databinding.FragmentSingInBinding
 import com.example.esportsmobile.databinding.FragmentSingUpBinding
 import com.google.android.material.textfield.TextInputEditText
 

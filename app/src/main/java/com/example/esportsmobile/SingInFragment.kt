@@ -34,16 +34,9 @@ class SingInFragment : Fragment(R.layout.fragment_sing_in) {
     override fun onResume() {
         super.onResume()
         singinButton.setOnClickListener{
-            startActivity(HomeActivity::class.java)
+            val intent = Intent(requireContext(),HomeActivity::class.java)
+            intent.putExtra("user_email", email.text.toString())
+            requireActivity().startActivity(intent)
         }
-    }
-
-    private fun startActivity(clazz: Class<*>, name: String ="", args: Bundle = Bundle()){
-        val intent = Intent(requireContext(),clazz).apply {
-            if(!name.isNullOrEmpty() && args.isEmpty){
-                putExtra(name, args)
-            }
-        }
-        requireActivity().startActivity(intent)
     }
 }
