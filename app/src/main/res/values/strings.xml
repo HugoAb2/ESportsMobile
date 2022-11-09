@@ -11,4 +11,5 @@
     <string name="country">Country</string>
     <string name="terms_conditions">I agree with all the therms and conditions of this app</string>
     <string name="google_account">Or log in with your Google Account:</string>
+    <string name="keep_connection">Keep me connected</string>
 </resources>

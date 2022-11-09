@@ -37,12 +37,22 @@
         android:textColorHint="@color/white"
         android:textColor="@color/white" />
 
+    <CheckBox
+        android:id="@+id/connection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="@string/keep_connection"
+        android:checked="true"
+        android:layout_marginTop="8dp"
+        />
+
     <Button
+        android:id="@+id/singin_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="@string/sign_in"
         android:background="@drawable/bg_button"
-
         android:layout_marginTop="200dp"/>
 
     <TextView
@@ -59,6 +69,7 @@
         app:cardCornerRadius="100dp"
         android:layout_margin="10dp">
         <ImageButton
+            android:id="@+id/google_button"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:src="@drawable/google_icon"

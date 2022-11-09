@@ -1,9 +1,7 @@
 package com.example.esportsmobile
 
-import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.findFragment
 import androidx.viewpager2.widget.ViewPager2
 import com.example.esportsmobile.databinding.ActivityLoginBinding
 import com.google.android.material.tabs.TabLayout
@@ -28,8 +26,10 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
+
+
     private fun configTabLayout(){
-        val adapter = LoginAdapter(this)
+        val adapter = PageAdapter(this)
         viewPager.adapter = adapter
 
         adapter.addFragment(SingInFragment(), "Sing In")

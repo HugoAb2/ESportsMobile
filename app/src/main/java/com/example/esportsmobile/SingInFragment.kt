@@ -2,20 +2,38 @@ package com.example.esportsmobile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import android.widget.Button
+import android.widget.CheckBox
+import android.widget.ImageButton
+import com.example.esportsmobile.databinding.FragmentSingInBinding
+import com.google.android.material.textfield.TextInputEditText
 
-class SingInFragment : Fragment() {
+class SingInFragment : Fragment(R.layout.fragment_sing_in) {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    private lateinit var binding : FragmentSingInBinding
 
-        return inflater.inflate(R.layout.fragment_sing_in, container, false)
+    private lateinit var email : TextInputEditText
+    private lateinit var password : TextInputEditText
+    private lateinit var connection : CheckBox
+    private lateinit var singinButton : Button
+    private lateinit var googleButton : ImageButton
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = FragmentSingInBinding.bind(view)
 
+        email = binding.emailTxt
+        password = binding.passwordTxt
+        connection = binding.connection
+        singinButton = binding.singinButton
+        googleButton = binding.googleButton
     }
 
+    override fun onResume() {
+        super.onResume()
+        singinButton.setOnClickListener{
+
+        }
+    }
 }
