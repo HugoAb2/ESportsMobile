@@ -1,5 +1,6 @@
 package com.example.esportsmobile
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.FragmentContainerView
@@ -18,7 +19,7 @@ class HomeActivity : AppCompatActivity() {
 
 
 
-    private var leagueLeagueIconList : MutableList<LeagueIcon> = ArrayList()
+    private var leagueIconList : MutableList<LeagueIcon> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,19 +34,36 @@ class HomeActivity : AppCompatActivity() {
         leagueListView.setHasFixedSize(true)
         leagueListView.layoutManager = GridLayoutManager(this, 2)
 
-        leagueLeagueIconList = ArrayList()
+        leagueIconList = ArrayList()
         addDataToList()
 
-        leagueIconAdapter = LeagueIconAdapter(leagueLeagueIconList)
+        leagueIconAdapter = LeagueIconAdapter(leagueIconList)
         leagueListView.adapter = leagueIconAdapter
+
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        leagueIconAdapter.setOnItemClickListener(object : LeagueIconAdapter.OnItemClickListener{
+            override fun onItemClick(position: Int) {
+                val intent = Intent(this@HomeActivity, LeagueActivity::class.java)
+                val choosenLeague = leagueIconList[position]
+                intent.putExtra("league_name", choosenLeague.name)
+                intent.putExtra("leagueIcon", choosenLeague.image)
+                startActivity(intent)
+            }
+        })
+    }
+
+
+
     private fun addDataToList(){
-        leagueLeagueIconList.add(LeagueIcon(R.drawable.logo_cblol, "CBLOL"))
-        leagueLeagueIconList.add(LeagueIcon(R.drawable.logo_lck, "LCK"))
-        leagueLeagueIconList.add(LeagueIcon(R.drawable.logo_lcs, "LCS"))
-        leagueLeagueIconList.add(LeagueIcon(R.drawable.logo_lec, "LEC"))
-        leagueLeagueIconList.add(LeagueIcon(R.drawable.logo_lpl, "LPL"))
-        leagueLeagueIconList.add(LeagueIcon(R.drawable.logo_worlds, "WORLDS"))
+        leagueIconList.add(LeagueIcon(R.drawable.logo_cblol, "CBLOL"))
+        leagueIconList.add(LeagueIcon(R.drawable.logo_lck, "LCK"))
+        leagueIconList.add(LeagueIcon(R.drawable.logo_lcs, "LCS"))
+        leagueIconList.add(LeagueIcon(R.drawable.logo_lec, "LEC"))
+        leagueIconList.add(LeagueIcon(R.drawable.logo_lpl, "LPL"))
+        leagueIconList.add(LeagueIcon(R.drawable.logo_worlds, "WORLDS"))
     }
 }
