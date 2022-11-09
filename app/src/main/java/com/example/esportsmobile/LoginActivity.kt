@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager2.widget.ViewPager2
 import com.example.esportsmobile.databinding.ActivityLoginBinding
+import com.example.esportsmobile.view.PageAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -25,8 +26,6 @@ class LoginActivity : AppCompatActivity() {
         configTabLayout()
 
     }
-
-
 
     private fun configTabLayout(){
         val adapter = PageAdapter(this)

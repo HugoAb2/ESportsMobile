@@ -1,4 +1,4 @@
-package com.example.esportsmobile
+package com.example.esportsmobile.view
 
 import android.content.res.Resources
 import androidx.fragment.app.Fragment

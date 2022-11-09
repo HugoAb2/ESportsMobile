@@ -1,4 +1,4 @@
-package com.example.esportsmobile
+package com.example.esportsmobile.model
 
 import android.media.Image
 

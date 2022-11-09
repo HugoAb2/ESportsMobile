@@ -7,6 +7,8 @@ import androidx.fragment.app.FragmentContainerView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.esportsmobile.databinding.ActivityHomeBinding
+import com.example.esportsmobile.model.LeagueIcon
+import com.example.esportsmobile.view.LeagueIconAdapter
 
 class HomeActivity : AppCompatActivity() {
 
@@ -48,9 +50,8 @@ class HomeActivity : AppCompatActivity() {
         leagueIconAdapter.setOnItemClickListener(object : LeagueIconAdapter.OnItemClickListener{
             override fun onItemClick(position: Int) {
                 val intent = Intent(this@HomeActivity, LeagueActivity::class.java)
-                val choosenLeague = leagueIconList[position]
-                intent.putExtra("league_name", choosenLeague.name)
-                intent.putExtra("leagueIcon", choosenLeague.image)
+                val chosenLeague = leagueIconList[position]
+                intent.putExtra("league_name", chosenLeague.name)
                 startActivity(intent)
             }
         })

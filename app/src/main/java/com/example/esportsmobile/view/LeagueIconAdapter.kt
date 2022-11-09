@@ -1,11 +1,10 @@
-package com.example.esportsmobile
+package com.example.esportsmobile.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.esportsmobile.databinding.LeagueItemBinding
-import kotlin.math.log
+import com.example.esportsmobile.model.LeagueIcon
 
 class LeagueIconAdapter(private val leagueLeagueIconList: MutableList<LeagueIcon>) : RecyclerView.Adapter<LeagueIconAdapter.MyViewHolder>() {
 
