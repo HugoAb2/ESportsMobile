@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="130dp"
+    android:layout_height="130dp"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_margin="20dp"
+    android:background="@drawable/bg_leagueicon">
+
+    <ImageView
+        android:id="@+id/league_logo"
+        android:layout_marginBottom="5dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/bg_league_icon"
+        android:src="@drawable/logo_cblol"
+        android:contentDescription="@string/logotype"
+        />
+
+    <TextView
+        android:id="@+id/league_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cblol"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        />
+</LinearLayout>

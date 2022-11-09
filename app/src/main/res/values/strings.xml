@@ -12,4 +12,9 @@
     <string name="terms_conditions">I agree with all the therms and conditions of this app</string>
     <string name="google_account">Or log in with your Google Account:</string>
     <string name="keep_connection">Keep me connected</string>
+    <string name="championship">Championship</string>
+    <string name="championships">championships</string>
+    <string name="welcome_my_lord">Welcome my Lord!</string>
+    <string name="logotype">logotype</string>
+    <string name="cblol">CBLOL</string>
 </resources>

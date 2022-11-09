@@ -1,5 +1,6 @@
 package com.example.esportsmobile
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
@@ -33,7 +34,16 @@ class SingInFragment : Fragment(R.layout.fragment_sing_in) {
     override fun onResume() {
         super.onResume()
         singinButton.setOnClickListener{
-
+            startActivity(HomeActivity::class.java)
         }
+    }
+
+    private fun startActivity(clazz: Class<*>, name: String ="", args: Bundle = Bundle()){
+        val intent = Intent(requireContext(),clazz).apply {
+            if(!name.isNullOrEmpty() && args.isEmpty){
+                putExtra(name, args)
+            }
+        }
+        requireActivity().startActivity(intent)
     }
 }
