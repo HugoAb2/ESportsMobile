@@ -8,6 +8,7 @@ import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.view.SupportActionModeWrapper
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentContainerView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,37 +16,46 @@ import com.example.esportsmobile.databinding.ActivityHomeBinding
 import com.example.esportsmobile.model.LeagueIcon
 import com.example.esportsmobile.model.User
 import com.example.esportsmobile.view.LeagueIconAdapter
+import com.google.android.material.navigation.NavigationView
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
 
     private lateinit var toogle : ActionBarDrawerToggle
+    private lateinit var navView: NavigationView
+    private lateinit var drawerLayout: DrawerLayout
 
     private lateinit var welcomeText : TextView
     private lateinit var leagueListView : RecyclerView
     private lateinit var leagueIconAdapter : LeagueIconAdapter
-    private lateinit var userEmail : String
+
+    private lateinit var user : User
 
     private var leagueIconList : MutableList<LeagueIcon> = ArrayList()
-    private var userList : MutableList<User> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        userList.add(User("Admin", 18, "Brazil", "admin", "*****"))
-        userEmail = intent.getStringExtra("user_email").toString()
-        init()
+        user = intent.getSerializableExtra("user") as User
 
-        val drawerLayout = binding.drawerLayout
-        val navView = binding.navView
+        setWelcomeMessage()
+
+        initRecyclerView()
+
+        drawerLayout = binding.drawerLayout
+        navView = binding.navView
         toogle = ActionBarDrawerToggle(this, drawerLayout,R.string.open, R.string.close)
         drawerLayout.addDrawerListener(toogle)
         toogle.syncState()
 
         supportActionBar?.setDisplayShowHomeEnabled(true)
+/*
+        navView.setNavigationItemSelectedListener {
+            https://www.youtube.com/watch?v=zQh-QGGKPw0&ab_channel=Foxandroid tempo 14:50
+        }*/
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -56,24 +66,8 @@ class HomeActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onStart() {
-        super.onStart()
-        //do something with userEmail to show a name in my View
-        welcomeText = binding.emphasisMessage
-        val welcomeMessage = "Welcome my Lord${findUserName()}!"
-        welcomeText.text = welcomeMessage
-    }
 
-    private fun findUserName(): String{
-        val user = userList.find { userEmail == it.email }
-        return if(user == null){
-            ""
-        }else{
-            " ${user.name}"
-        }
-    }
-
-    private fun init(){
+    private fun initRecyclerView(){
         leagueListView = binding.recycleView
         leagueListView.setHasFixedSize(true)
         leagueListView.layoutManager = GridLayoutManager(this, 2)
@@ -84,6 +78,12 @@ class HomeActivity : AppCompatActivity() {
         leagueIconAdapter = LeagueIconAdapter(leagueIconList)
         leagueListView.adapter = leagueIconAdapter
 
+    }
+
+    private fun setWelcomeMessage(){
+        welcomeText = binding.emphasisMessage
+        val welcomeMessage = "Welcome my Lord ${user.name}!"
+        welcomeText.text = welcomeMessage
     }
 
     override fun onResume() {
