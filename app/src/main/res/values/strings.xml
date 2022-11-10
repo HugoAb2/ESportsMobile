@@ -17,4 +17,21 @@
     <string name="welcome_my_lord">Welcome my Lord!</string>
     <string name="logotype">logotype</string>
     <string name="cblol">CBLOL</string>
+    <string name="change_account">Change Account</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="log_out">Log Out</string>
+    <string name="local_brazil">Local: Brazil</string>
+    <string name="brazil">Brazil</string>
+    <string name="eua">EUA</string>
+    <string name="usa">USA</string>
+    <string name="europe">Europe</string>
+    <string name="help">Help</string>
+    <string name="favorites">Favorites</string>
+    <string name="local">Local:</string>
+    <string name="account">Account</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="profile_picture">Profile picture</string>
+    <string name="user_name">Abedojão</string>
+    <string name="user_email_example">rodrigueshugoab2@gmail.com</string>
 </resources>

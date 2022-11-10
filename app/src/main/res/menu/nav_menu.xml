@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item
+        android:id="@+id/account"
+        android:title="@string/account">
+        <menu>
+            <item
+                android:id="@+id/update_profile"
+                android:icon="@drawable/ic_baseline_edit_24"
+                android:title="@string/edit_profile"/>
+
+
+            <item
+                android:id="@+id/change_account"
+                android:icon="@drawable/ic_baseline_change_account_24"
+                android:title="@string/change_account"/>
+
+
+            <item
+                android:id="@+id/favorites"
+                android:title="@string/favorites"
+                android:icon="@drawable/ic_baseline_favorites_24"/>
+        </menu>
+    </item>
+
+    <item
+            android:id="@+id/local"
+            android:title="@string/local">
+
+        <menu>
+            <item
+                android:id="@+id/place"
+                android:title="@string/brazil"
+                android:icon="@drawable/ic_baseline_location_on_24"
+                android:checked="true"
+                android:visible="true"/>
+        </menu>
+    </item>
+
+
+    <item
+        android:id="@+id/help"
+        android:title="@string/help"
+        android:icon="@drawable/ic_baseline_help_outline_24"/>
+
+
+    <item
+        android:id="@+id/log_out"
+        android:icon="@drawable/ic_baseline_exit_to_app_24"
+        android:title="@string/log_out"/>
+
+
+</menu>

@@ -4,7 +4,10 @@ import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.TextView
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.view.SupportActionModeWrapper
 import androidx.fragment.app.FragmentContainerView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,7 +20,7 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
 
-    private lateinit var topBar : FragmentContainerView
+    private lateinit var toogle : ActionBarDrawerToggle
 
     private lateinit var welcomeText : TextView
     private lateinit var leagueListView : RecyclerView
@@ -35,6 +38,22 @@ class HomeActivity : AppCompatActivity() {
         userList.add(User("Admin", 18, "Brazil", "admin", "*****"))
         userEmail = intent.getStringExtra("user_email").toString()
         init()
+
+        val drawerLayout = binding.drawerLayout
+        val navView = binding.navView
+        toogle = ActionBarDrawerToggle(this, drawerLayout,R.string.open, R.string.close)
+        drawerLayout.addDrawerListener(toogle)
+        toogle.syncState()
+
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (toogle.onOptionsItemSelected(item)){
+            return true
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onStart() {
