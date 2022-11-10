@@ -26,9 +26,4 @@ class MainActivity : AppCompatActivity() {
             startActivity(loginActivity)
         }
     }
-
-    override fun onStop() {
-        super.onStop()
-        finish()
-    }
 }

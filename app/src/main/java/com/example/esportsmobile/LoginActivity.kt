@@ -27,6 +27,11 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
+    override fun onStop() {
+        super.onStop()
+        finish()
+    }
+
     private fun configTabLayout(){
         val adapter = PageAdapter(this)
         viewPager.adapter = adapter
