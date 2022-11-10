@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.view.SupportActionModeWrapper
@@ -25,6 +26,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var toogle : ActionBarDrawerToggle
     private lateinit var navView: NavigationView
     private lateinit var drawerLayout: DrawerLayout
+    private lateinit var menuIcon : ImageView
 
     private lateinit var welcomeText : TextView
     private lateinit var leagueListView : RecyclerView
@@ -47,22 +49,22 @@ class HomeActivity : AppCompatActivity() {
 
         drawerLayout = binding.drawerLayout
         navView = binding.navView
+        menuIcon = binding.menuIcon
         toogle = ActionBarDrawerToggle(this, drawerLayout,R.string.open, R.string.close)
         drawerLayout.addDrawerListener(toogle)
         toogle.syncState()
 
         supportActionBar?.setDisplayShowHomeEnabled(true)
-/*
-        navView.setNavigationItemSelectedListener {
-            https://www.youtube.com/watch?v=zQh-QGGKPw0&ab_channel=Foxandroid tempo 14:50
-        }*/
+        menuIcon.setOnClickListener{
+            drawerLayout.open()
+        }
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (toogle.onOptionsItemSelected(item)){
             return true
         }
-
         return super.onOptionsItemSelected(item)
     }
 
@@ -97,7 +99,25 @@ class HomeActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         })
+
+        navView.setNavigationItemSelectedListener {
+            when(it.itemId) {
+                R.id.change_account -> {
+                    val intent = Intent(this, LoginActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+                R.id.log_out -> {
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+            }
+
+            true
+        }
     }
+
 
 
 
