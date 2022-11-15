@@ -50,11 +50,7 @@ class HomeActivity : AppCompatActivity() {
         toogle = ActionBarDrawerToggle(this, drawerLayout,R.string.open, R.string.close)
         drawerLayout.addDrawerListener(toogle)
         toogle.syncState()
-
         supportActionBar?.setDisplayShowHomeEnabled(true)
-        menuIcon.setOnClickListener{
-            drawerLayout.open()
-        }
 
     }
 
@@ -93,9 +89,14 @@ class HomeActivity : AppCompatActivity() {
                 val intent = Intent(this@HomeActivity, LeagueActivity::class.java)
                 val chosenLeague = leagueIconList[position]
                 intent.putExtra("league_name", chosenLeague.name)
+                intent.putExtra("user", user)
                 startActivity(intent)
             }
         })
+
+        menuIcon.setOnClickListener{
+            drawerLayout.open()
+        }
 
         navView.setNavigationItemSelectedListener {
             when(it.itemId) {
