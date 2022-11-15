@@ -1,22 +1,32 @@
 package com.example.esportsmobile
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.esportsmobile.databinding.ActivityLeagueBinding
+import com.example.esportsmobile.model.User
 
-class LeagueActivity : AppCompatActivity() {
+class LeagueActivity : DrawerBaseActivity() {
 
+    companion object{
+        private const val TAG = "understanding"
+    }
+    
     private lateinit var binding : ActivityLeagueBinding
-    private lateinit var bundle : Bundle
 
-    private lateinit var leagueName : String
+    private lateinit var user: User
+    private lateinit var tittle : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLeagueBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        bundle = intent.extras!!
-        leagueName = bundle.getString("league_name").toString()
+        user = intent.getSerializableExtra("user") as User
+        tittle = intent.getStringExtra("league_name") as String
+
+        allocateActivityTittle(tittle)
+        updateNavUser(user)
+
     }
+
+
 }
