@@ -3,7 +3,7 @@ package com.example.esportsmobile.view
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.esportsmobile.databinding.LeagueItemBinding
+import com.example.esportsmobile.databinding.ItemLeagueBinding
 import com.example.esportsmobile.model.LeagueIcon
 
 class LeagueIconAdapter(private val leagueLeagueIconList: MutableList<LeagueIcon>) : RecyclerView.Adapter<LeagueIconAdapter.MyViewHolder>() {
@@ -21,7 +21,7 @@ class LeagueIconAdapter(private val leagueLeagueIconList: MutableList<LeagueIcon
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val leagueIconView = LeagueItemBinding.inflate(
+        val leagueIconView = ItemLeagueBinding.inflate(
             LayoutInflater.from(parent.context),parent, false
         )
         return MyViewHolder(leagueIconView, itemListener)
@@ -37,7 +37,7 @@ class LeagueIconAdapter(private val leagueLeagueIconList: MutableList<LeagueIcon
         return leagueLeagueIconList.size
     }
 
-    class MyViewHolder (binding : LeagueItemBinding, listener: OnItemClickListener): RecyclerView.ViewHolder(binding.root){
+    class MyViewHolder (binding : ItemLeagueBinding, listener: OnItemClickListener): RecyclerView.ViewHolder(binding.root){
         val logo = binding.leagueLogo
         val name = binding.leagueName
         val layout = binding.leagueIcon
