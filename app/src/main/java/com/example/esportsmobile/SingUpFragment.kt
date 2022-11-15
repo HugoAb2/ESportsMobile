@@ -43,5 +43,8 @@ class SingUpFragment : Fragment(R.layout.fragment_sing_up) {
         }
     }
 
+    private fun generateID(): String{
+        return "size+1"
+    }
 
 }

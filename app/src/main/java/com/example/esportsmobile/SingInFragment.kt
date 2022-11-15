@@ -33,10 +33,8 @@ class SingInFragment : Fragment(R.layout.fragment_sing_in) {
         singinButton = binding.singinButton
         googleButton = binding.googleButton
 
-        userList.add(User("admin", 1000, "","admin","123"))
+        userList.add(User("","admin", 1000, "","admin","123", (R.drawable.profile).hashCode()))
     }
-
-
 
     override fun onResume() {
         super.onResume()
@@ -51,7 +49,7 @@ class SingInFragment : Fragment(R.layout.fragment_sing_in) {
         return when (val user = userList.find { email.text.toString() == it.email }) {
             null -> {
                 //adicionar condição para quando o email do usuario informado nao existir
-                User("",0,"","","")
+                User("","",0,"","","",null)
             }
             else -> {
                 user
