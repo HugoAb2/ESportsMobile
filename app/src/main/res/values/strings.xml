@@ -35,4 +35,7 @@
     <string name="user_name">Abedojão</string>
     <string name="user_email_example">rodrigueshugoab2@gmail.com</string>
     <string name="menu_icon">menu icon</string>
+    <string name="league">league</string>
+    <string name="team">Team</string>
+
 </resources>
