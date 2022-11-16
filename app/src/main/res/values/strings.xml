@@ -37,5 +37,16 @@
     <string name="menu_icon">menu icon</string>
     <string name="league">league</string>
     <string name="team">Team</string>
+    <string name="region">Region</string>
+    <string name="split2_2022">Split2 2022</string>
+    <string name="season">Season</string>
+    <string name="average_game_time">Average Game Time</string>
+    <string name="shortest_game_time">Shortest Game Time</string>
+    <string name="longest_game_time">Longest Game Time</string>
+    <string name="_22_51">22:51</string>
+    <string name="_47_41">47:41</string>
+    <string name="_32_52">32:52</string>
+    <string name="average_game_kills">Average Game Kills</string>
+    <string name="_26">26</string>
 
 </resources>
