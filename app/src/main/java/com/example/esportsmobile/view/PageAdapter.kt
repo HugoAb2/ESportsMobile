@@ -1,6 +1,5 @@
 package com.example.esportsmobile.view
 
-import android.content.res.Resources
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -23,7 +22,6 @@ class PageAdapter (fragmentActivity: FragmentActivity) : FragmentStateAdapter(fr
     override fun getItemCount(): Int {
         return fragmentList.size
     }
-
 
     override fun createFragment(position: Int): Fragment {
         return fragmentList[position]
