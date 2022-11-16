@@ -120,11 +120,11 @@ class HomeActivity : AppCompatActivity() {
 
 
     private fun addDataToList(){
-        leagueIconList.add(LeagueIcon(R.drawable.logo_cblol, "CBLOL"))
-        leagueIconList.add(LeagueIcon(R.drawable.logo_lck, "LCK"))
-        leagueIconList.add(LeagueIcon(R.drawable.logo_lcs, "LCS"))
-        leagueIconList.add(LeagueIcon(R.drawable.logo_lec, "LEC"))
-        leagueIconList.add(LeagueIcon(R.drawable.logo_lpl, "LPL"))
-        leagueIconList.add(LeagueIcon(R.drawable.logo_worlds, "WORLDS"))
+        leagueIconList.add(LeagueIcon(R.drawable.league_logo_cblol, "CBLOL"))
+        leagueIconList.add(LeagueIcon(R.drawable.league_logo_lck, "LCK"))
+        leagueIconList.add(LeagueIcon(R.drawable.league_logo_lcs, "LCS"))
+        leagueIconList.add(LeagueIcon(R.drawable.league_logo_lec, "LEC"))
+        leagueIconList.add(LeagueIcon(R.drawable.league_logo_lpl, "LPL"))
+        leagueIconList.add(LeagueIcon(R.drawable.league_logo_worlds, "WORLDS"))
     }
 }
