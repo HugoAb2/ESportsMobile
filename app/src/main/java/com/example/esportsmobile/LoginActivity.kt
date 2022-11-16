@@ -3,7 +3,9 @@ package com.example.esportsmobile
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager2.widget.ViewPager2
+import com.example.esportsmobile.dao.UsersDataSource
 import com.example.esportsmobile.databinding.ActivityLoginBinding
+import com.example.esportsmobile.model.User
 import com.example.esportsmobile.view.PageAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -15,6 +17,8 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityLoginBinding
 
+    private lateinit var usersList : MutableList<User>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -23,6 +27,7 @@ class LoginActivity : AppCompatActivity() {
         tabLayout = binding.tabLayout
         viewPager = binding.viewPager
 
+        usersList = UsersDataSource.createUsersList()
         configTabLayout()
 
     }
@@ -36,8 +41,11 @@ class LoginActivity : AppCompatActivity() {
         val adapter = PageAdapter(this)
         viewPager.adapter = adapter
 
-        adapter.addFragment(SingInFragment(), "Sing In")
-        adapter.addFragment(SingUpFragment(), "Sing Up")
+        val singInFragment = SingInFragment()
+        val singUpFragment = SingUpFragment()
+
+        adapter.addFragment(singInFragment, "Sing In")
+        adapter.addFragment(singUpFragment, "Sing Up")
 
         viewPager.offscreenPageLimit = adapter.itemCount
         val mediator = TabLayoutMediator(
