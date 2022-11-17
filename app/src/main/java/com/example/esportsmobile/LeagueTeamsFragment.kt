@@ -35,10 +35,6 @@ class LeagueTeamsFragment : Fragment(R.layout.fragment_league_teams) {
         binding = FragmentLeagueTeamsBinding.bind(view)
 
         initRecyclerView()
-    }
-
-    override fun onResume() {
-        super.onResume()
         setItemTeamListener()
     }
 

@@ -71,7 +71,11 @@ open class DrawerBaseActivity : AppCompatActivity(), NavigationView.OnNavigation
             header.findViewById<ImageView>(R.id.user_profile).setImageResource((R.drawable.ic_baseline_person_24).hashCode())
         }else header.findViewById<ImageView>(R.id.user_profile).setImageResource(user.profile.hashCode())
 
-        header.findViewById<TextView>(R.id.user_name).text = user.name
-        header.findViewById<TextView>(R.id.user_email).text = user.email
+        header.apply {
+            findViewById<TextView>(R.id.user_name).text = user.name
+            findViewById<TextView>(R.id.user_email).text = user.email
+        }
+
+
     }
 }

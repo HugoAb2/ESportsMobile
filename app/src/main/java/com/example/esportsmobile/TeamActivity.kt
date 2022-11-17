@@ -31,13 +31,15 @@ class TeamActivity : DrawerBaseActivity() {
     }
 
     private fun startPage(){
-        binding.teamLogo.setImageResource(team.logo)
-        binding.teamName.text = team.name
-        binding.region.text = team.region
-        binding.winRate.text = team.winRate
-        binding.averageGameKills.text = team.averageKillsGame
-        binding.averageGameDeath.text = team.averageDeathsGame
-        binding.averageGameTime.text = team.averageGameTime
+        binding.apply {
+            teamLogo.setImageResource(team.logo)
+            teamName.text = team.name
+            region.text = team.region
+            winRate.text = team.winRate
+            averageGameKills.text = team.averageKillsGame
+            averageGameDeath.text = team.averageDeathsGame
+            averageGameTime.text = team.averageGameTime
+        }
     }
 
     private fun getTeamData(){

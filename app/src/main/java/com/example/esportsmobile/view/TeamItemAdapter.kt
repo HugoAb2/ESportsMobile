@@ -18,11 +18,16 @@ class TeamItemAdapter(private val teamItemList: MutableList<TeamIcon>, private v
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val team = teamItemList[position]
-        holder.logo.setImageResource(team.logo)
-        holder.name.text = team.name
-        holder.layout.setOnClickListener{
-            onItemClicked(team)
+        holder.apply {
+            logo.setImageResource(team.logo)
+            name.text = team.name
+            layout.setOnClickListener{
+                onItemClicked(team)
+            }
         }
+
+
+
     }
 
     override fun getItemCount(): Int {

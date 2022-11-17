@@ -29,8 +29,10 @@ class LeagueIconAdapter(private val leagueLeagueIconList: MutableList<LeagueIcon
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val league = leagueLeagueIconList[position]
-        holder.logo.setImageResource(league.image)
-        holder.name.text = league.name
+        holder.apply {
+            logo.setImageResource(league.image)
+            name.text = league.name
+        }
     }
 
     override fun getItemCount(): Int {
