@@ -23,6 +23,7 @@
         <entry key="..\:/Users/hugoc/Documents/Software Engenier/Desenvolvimento Mobile/ESportsMobile/app/src/main/res/layout/activity_league.xml" value="0.16" />
         <entry key="..\:/Users/hugoc/Documents/Software Engenier/Desenvolvimento Mobile/ESportsMobile/app/src/main/res/layout/activity_login.xml" value="0.225" />
         <entry key="..\:/Users/hugoc/Documents/Software Engenier/Desenvolvimento Mobile/ESportsMobile/app/src/main/res/layout/activity_main.xml" value="0.225" />
+        <entry key="..\:/Users/hugoc/Documents/Software Engenier/Desenvolvimento Mobile/ESportsMobile/app/src/main/res/layout/activity_team.xml" value="0.18469431380932022" />
         <entry key="..\:/Users/hugoc/Documents/Software Engenier/Desenvolvimento Mobile/ESportsMobile/app/src/main/res/layout/content_laout.xml" value="0.1838392475416845" />
         <entry key="..\:/Users/hugoc/Documents/Software Engenier/Desenvolvimento Mobile/ESportsMobile/app/src/main/res/layout/content_layout.xml" value="0.1" />
         <entry key="..\:/Users/hugoc/Documents/Software Engenier/Desenvolvimento Mobile/ESportsMobile/app/src/main/res/layout/fragment_fullscreen.xml" value="0.225" />
@@ -33,12 +34,13 @@
         <entry key="..\:/Users/hugoc/Documents/Software Engenier/Desenvolvimento Mobile/ESportsMobile/app/src/main/res/layout/fragment_nav.xml" value="0.18469431380932022" />
         <entry key="..\:/Users/hugoc/Documents/Software Engenier/Desenvolvimento Mobile/ESportsMobile/app/src/main/res/layout/fragment_nav_drawer.xml" value="0.22" />
         <entry key="..\:/Users/hugoc/Documents/Software Engenier/Desenvolvimento Mobile/ESportsMobile/app/src/main/res/layout/fragment_sing_in.xml" value="0.33" />
-        <entry key="..\:/Users/hugoc/Documents/Software Engenier/Desenvolvimento Mobile/ESportsMobile/app/src/main/res/layout/fragment_sing_up.xml" value="0.1" />
+        <entry key="..\:/Users/hugoc/Documents/Software Engenier/Desenvolvimento Mobile/ESportsMobile/app/src/main/res/layout/fragment_sing_up.xml" value="0.33" />
         <entry key="..\:/Users/hugoc/Documents/Software Engenier/Desenvolvimento Mobile/ESportsMobile/app/src/main/res/layout/item_league.xml" value="0.1" />
         <entry key="..\:/Users/hugoc/Documents/Software Engenier/Desenvolvimento Mobile/ESportsMobile/app/src/main/res/layout/item_team.xml" value="0.22" />
         <entry key="..\:/Users/hugoc/Documents/Software Engenier/Desenvolvimento Mobile/ESportsMobile/app/src/main/res/layout/league_item.xml" value="0.18469431380932022" />
         <entry key="..\:/Users/hugoc/Documents/Software Engenier/Desenvolvimento Mobile/ESportsMobile/app/src/main/res/layout/nav_drawer_header.xml" value="0.18469431380932022" />
         <entry key="..\:/Users/hugoc/Documents/Software Engenier/Desenvolvimento Mobile/ESportsMobile/app/src/main/res/layout/nav_header.xml" value="0.18469431380932022" />
+        <entry key="..\:/Users/hugoc/Documents/Software Engenier/Desenvolvimento Mobile/ESportsMobile/app/src/main/res/layout/nav_view.xml" value="0.18469431380932022" />
         <entry key="..\:/Users/hugoc/Documents/Software Engenier/Desenvolvimento Mobile/ESportsMobile/app/src/main/res/layout/team_item.xml" value="0.18469431380932022" />
         <entry key="..\:/Users/hugoc/Documents/Software Engenier/Desenvolvimento Mobile/ESportsMobile/app/src/main/res/menu/nav_drawer_menu.xml" value="0.18469431380932022" />
         <entry key="..\:/Users/hugoc/Documents/Software Engenier/Desenvolvimento Mobile/ESportsMobile/app/src/main/res/menu/nav_menu.xml" value="0.5" />

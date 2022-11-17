@@ -48,5 +48,12 @@
     <string name="_32_52">32:52</string>
     <string name="average_game_kills">Average Game Kills</string>
     <string name="_26">26</string>
+    <string name="win_rate">Win Rate</string>
+    <string name="average_game_deaths">Average Game Deaths</string>
+    <string name="_12_18">12/18</string>
+    <string name="_16_7">16.7</string>
+    <string name="_11_4">11.4</string>
+    <string name="_33_17">33:17</string>
+    <string name="loud">Loud</string>
 
 </resources>

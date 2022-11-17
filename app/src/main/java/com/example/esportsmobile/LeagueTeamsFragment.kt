@@ -1,9 +1,8 @@
 package com.example.esportsmobile
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,10 +13,6 @@ import com.example.esportsmobile.model.User
 import com.example.esportsmobile.view.TeamItemAdapter
 
 class LeagueTeamsFragment : Fragment(R.layout.fragment_league_teams) {
-
-    companion object{
-        private const val TAG = "working"
-    }
 
     private lateinit var binding : FragmentLeagueTeamsBinding
 
@@ -44,28 +39,27 @@ class LeagueTeamsFragment : Fragment(R.layout.fragment_league_teams) {
 
     override fun onResume() {
         super.onResume()
+        setItemTeamListener()
+    }
 
-/*
-        teamItemAdapter.setOnItemClickListener(object : TeamItemAdapter.OnItemClickListener{
-            override fun onItemClick(position: Int) {
-                val intent = Intent(requireContext(), TeamActivity::class.java)
-                val chosenTeam = teamList[position]
-                intent.putExtra("team_name", chosenTeam.name)
-                intent.putExtra("user", user)
-                startActivity(intent)
-            }
-        })*/
+    private fun setItemTeamListener(){
+        teamItemAdapter = TeamItemAdapter(teamList){
+            val intent = Intent(requireActivity(), TeamActivity::class.java)
+            intent.putExtra("name", it.name)
+            intent.putExtra("user", user)
+            startActivity(intent)
+        }
+
+        teamListView.adapter = teamItemAdapter
     }
 
     private fun initRecyclerView(){
 
         teamListView = binding.teamsRecyclerView
+
         teamListView.setHasFixedSize(true)
         teamListView.layoutManager = LinearLayoutManager(requireContext())
 
-        teamItemAdapter = TeamItemAdapter(teamList)
-
-        teamListView.adapter = teamItemAdapter
     }
 
     private fun initTeamList(){
@@ -75,6 +69,5 @@ class LeagueTeamsFragment : Fragment(R.layout.fragment_league_teams) {
     fun receiveData(leagueName : String, userLog : User){
         league = leagueName
         user = userLog
-        Log.d(TAG, "receiveLeague: $league")
     }
 }

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.esportsmobile.model.TeamIcon
 
-class TeamItemAdapter(private val teamItemList: MutableList<TeamIcon>) : RecyclerView.Adapter<TeamItemAdapter.MyViewHolder>() {
+class TeamItemAdapter(private val teamItemList: MutableList<TeamIcon>, private val onItemClicked: (TeamIcon)->Unit) : RecyclerView.Adapter<TeamItemAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val teamItemView = ItemTeamBinding.inflate(
@@ -20,6 +20,9 @@ class TeamItemAdapter(private val teamItemList: MutableList<TeamIcon>) : Recycle
         val team = teamItemList[position]
         holder.logo.setImageResource(team.logo)
         holder.name.text = team.name
+        holder.layout.setOnClickListener{
+            onItemClicked(team)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -30,6 +33,7 @@ class TeamItemAdapter(private val teamItemList: MutableList<TeamIcon>) : Recycle
         val logo = binding.teamLogo
         val name = binding.teamName
         val layout = binding.layout
+
 
     }
 
