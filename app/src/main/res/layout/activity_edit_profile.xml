@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditProfileActivity"
+    android:background="@drawable/gradient_background">
+
+    <ImageView
+        android:id="@+id/backIcon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_baseline_back_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/back_menu"/>
+
+    <ImageView
+        android:id="@+id/profile_pic"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_margin="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/backIcon"
+        android:src="@drawable/ic_baseline_person_24"
+        android:background="@drawable/bg_leagueicon"
+        android:contentDescription="@string/user_image"/>
+
+    <TextView
+        android:id="@+id/user_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profile_pic"
+        android:text="@string/user_id"
+        android:layout_marginTop="10dp"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/nameTxt"
+        android:background="@drawable/bg_edittext"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginVertical="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/name"
+        android:inputType="textEmailAddress"
+        android:maxWidth="200dp"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/user_id"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginVertical="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nameTxt">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_edittext"
+            android:hint="@string/age"
+            android:textColorHint="@color/white"
+            android:inputType="numberDecimal"
+            android:maxLength="2"/>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/countryTxt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_edittext"
+            android:layout_marginStart="10dp"
+            android:inputType="text"
+            android:maxLength="15"
+            android:hint="@string/country"
+            android:textColorHint="@color/white"/>
+    </LinearLayout>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/emailTxt"
+        android:background="@drawable/bg_edittext"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginVertical="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:maxWidth="200dp"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout"/>
+
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/passwordTxt"
+        android:background="@drawable/bg_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="20dp"
+        android:layout_marginHorizontal="40dp"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:maxWidth="200dp"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/emailTxt"/>
+
+    <Button
+        android:id="@+id/update_profile"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/confirm"
+        android:background="@drawable/bg_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="45dp"
+        android:layout_marginBottom="30dp"/>
+
+    <Button
+        android:id="@+id/cancel_button"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/cancel"
+        android:background="@drawable/bg_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/update_profile"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="30dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
