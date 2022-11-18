@@ -59,5 +59,6 @@
     <string name="confirm">Confirm</string>
     <string name="user_id">user ID</string>
     <string name="back_menu">back menu</string>
+    <string name="user_image">user image</string>
 
 </resources>
