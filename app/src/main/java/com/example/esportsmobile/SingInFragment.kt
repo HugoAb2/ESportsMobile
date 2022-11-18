@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.ImageButton
+import android.widget.Toast
 import com.example.esportsmobile.dao.UsersDataSource
 import com.example.esportsmobile.databinding.FragmentSingInBinding
 import com.example.esportsmobile.model.User
@@ -40,20 +41,27 @@ class SingInFragment : Fragment(R.layout.fragment_sing_in) {
         super.onResume()
         singinButton.setOnClickListener{
             val intent = Intent(requireContext(),HomeActivity::class.java)
-            intent.putExtra("user", findUser())
-            requireActivity().startActivity(intent)
+            val user = findUser()
+            if (user != null){
+                intent.putExtra("user", user)
+                requireActivity().startActivity(intent)
+            }
         }
     }
 
-    private fun findUser() : User{
-        return when (val user = usersList.find { email.text.toString() == it.email }) {
-            null -> {
-                //adicionar condição para quando o email do usuario informado nao existir
-                User("","",0,"","","",null)
-            }
-            else -> {
-                user
-            }
+    private fun findUser() : User?{
+        val user = usersList.find { email.text.toString() == it.email }
+        return if (user == null ) {
+            Toast.makeText(requireContext(), "User not found", Toast.LENGTH_SHORT).show()
+            null
+        } else {
+            return if (password.text.toString() != user.password){
+                    Toast.makeText(requireContext(),"Wrong password", Toast.LENGTH_SHORT).show()
+                    null
+                }
+                else {
+                    user
+                }
         }
     }
 }
