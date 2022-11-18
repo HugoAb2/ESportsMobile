@@ -6,7 +6,9 @@ import android.view.View
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.ImageButton
+import android.widget.Toast
 import com.example.esportsmobile.databinding.FragmentSingUpBinding
+import com.example.esportsmobile.model.User
 import com.google.android.material.textfield.TextInputEditText
 
 class SingUpFragment : Fragment(R.layout.fragment_sing_up) {
@@ -34,6 +36,17 @@ class SingUpFragment : Fragment(R.layout.fragment_sing_up) {
         thermsConditions = binding.thermsConditions
         singUpButton = binding.singupButton
         googleAccount = binding.googleButton
+    }
+
+    private fun newUser(): User {
+        return User(generateID(),
+        name.text.toString(),
+        age.text.toString().toInt(),
+        country.text.toString(),
+        email.text.toString(),
+        password.text.toString(),
+        null
+        )
     }
 
     override fun onResume() {

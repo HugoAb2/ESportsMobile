@@ -1,7 +1,5 @@
 package com.example.esportsmobile.model
 
-import android.media.Image
-import android.widget.ImageView
 import java.io.Serializable
 
 data class User(

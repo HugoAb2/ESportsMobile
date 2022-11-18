@@ -55,5 +55,9 @@
     <string name="_11_4">11.4</string>
     <string name="_33_17">33:17</string>
     <string name="loud">Loud</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm</string>
+    <string name="user_id">user ID</string>
+    <string name="back_menu">back menu</string>
 
 </resources>
