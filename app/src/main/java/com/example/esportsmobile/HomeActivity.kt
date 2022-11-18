@@ -1,31 +1,18 @@
 package com.example.esportsmobile
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.esportsmobile.databinding.ActivityHomeBinding
 import com.example.esportsmobile.model.LeagueIcon
 import com.example.esportsmobile.model.User
 import com.example.esportsmobile.view.LeagueIconAdapter
-import com.google.android.material.navigation.NavigationView
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : DrawerBaseActivity() {
 
     private lateinit var binding: ActivityHomeBinding
 
-    private lateinit var toogle : ActionBarDrawerToggle
-    private lateinit var navView: NavigationView
-    private lateinit var drawerLayout: DrawerLayout
-    private lateinit var menuIcon : ImageView
-
-    private lateinit var welcomeText : TextView
     private lateinit var leagueListView : RecyclerView
     private lateinit var leagueIconAdapter : LeagueIconAdapter
 
@@ -40,27 +27,12 @@ class HomeActivity : AppCompatActivity() {
 
         user = intent.getSerializableExtra("user") as User
 
-        setWelcomeMessage()
+        implementsNavDrawer(user)
 
         initRecyclerView()
 
-        drawerLayout = binding.drawerLayout
-        navView = binding.navView
-        menuIcon = binding.menuIcon
-        toogle = ActionBarDrawerToggle(this, drawerLayout,R.string.open, R.string.close)
-        drawerLayout.addDrawerListener(toogle)
-        toogle.syncState()
-        supportActionBar?.setDisplayShowHomeEnabled(true)
 
     }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (toogle.onOptionsItemSelected(item)){
-            return true
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
 
     private fun initRecyclerView(){
         leagueListView = binding.recycleView
@@ -75,12 +47,6 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
-    private fun setWelcomeMessage(){
-        welcomeText = binding.emphasisMessage
-        val welcomeMessage = "Welcome my Lord ${user.name}!"
-        welcomeText.text = welcomeMessage
-    }
-
     override fun onResume() {
         super.onResume()
 
@@ -93,31 +59,12 @@ class HomeActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         })
-
-        menuIcon.setOnClickListener{
-            drawerLayout.open()
-        }
-
-        navView.setNavigationItemSelectedListener {
-            when(it.itemId) {
-                R.id.change_account -> {
-                    val intent = Intent(this, LoginActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-                R.id.log_out -> {
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-            }
-
-            true
-        }
     }
 
-
-
+    private fun implementsNavDrawer(user: User){
+        allocateActivityTittle("Home")
+        updateNavUser(user)
+    }
 
     private fun addDataToList(){
         leagueIconList.add(LeagueIcon(R.drawable.league_logo_cblol, "CBLOL"))
