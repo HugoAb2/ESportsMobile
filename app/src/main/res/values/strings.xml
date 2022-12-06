@@ -60,5 +60,16 @@
     <string name="user_id">user ID</string>
     <string name="back_menu">back menu</string>
     <string name="user_image">user image</string>
+    <string name="home">home</string>
+    <string name="games">games</string>
+    <string name="list">list</string>
+    <string name="bets">bets</string>
+    <string name="friends">friends</string>
+    <string name="comments">Comments</string>
+    <string name="team_name">Team</string>
+    <string name="show_comments">Show Comments</string>
+    <string name="add_comment">Add Comment</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="location">Location</string>
 
 </resources>
