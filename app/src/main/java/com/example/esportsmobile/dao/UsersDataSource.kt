@@ -28,6 +28,51 @@ class UsersDataSource {
                 "*****",
                 R.drawable.profile2))
 
+            list.add(User(
+                "3",
+                "Guilherme",
+                20,
+                "Brazil",
+                "guilherme.sogliato@gmail.com",
+                "*****",
+                R.drawable.profile2))
+
+            list.add(User(
+                "4",
+                "Guilherme",
+                20,
+                "Brazil",
+                "guilherme.sogliato@gmail.com",
+                "*****",
+                R.drawable.profile2))
+
+            list.add(User(
+                "5",
+                "Guilherme",
+                20,
+                "Brazil",
+                "guilherme.sogliato@gmail.com",
+                "*****",
+                R.drawable.profile2))
+
+            list.add(User(
+                "6",
+                "Guilherme",
+                20,
+                "Brazil",
+                "guilherme.sogliato@gmail.com",
+                "*****",
+                R.drawable.profile2))
+
+            list.add(User(
+                "7",
+                "Guilherme",
+                20,
+                "Brazil",
+                "guilherme.sogliato@gmail.com",
+                "*****",
+                R.drawable.profile2))
+
             return list
         }
 

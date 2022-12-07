@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.esportsmobile.dao.LeagueTeamIconsDataSource
 import com.example.esportsmobile.databinding.FragmentLeagueTeamsBinding
 import com.example.esportsmobile.model.TeamIcon
-import com.example.esportsmobile.model.User
 import com.example.esportsmobile.view.TeamItemAdapter
 
 class LeagueTeamsFragment : Fragment(R.layout.fragment_league_teams) {
@@ -17,7 +16,6 @@ class LeagueTeamsFragment : Fragment(R.layout.fragment_league_teams) {
     private lateinit var binding : FragmentLeagueTeamsBinding
 
     private lateinit var league : String
-    private lateinit var user : User
 
     private lateinit var teamItemAdapter: TeamItemAdapter
     private lateinit var teamListView : RecyclerView
@@ -42,7 +40,6 @@ class LeagueTeamsFragment : Fragment(R.layout.fragment_league_teams) {
         teamItemAdapter = TeamItemAdapter(teamList){
             val intent = Intent(requireActivity(), TeamActivity::class.java)
             intent.putExtra("name", it.name)
-            intent.putExtra("user", user)
             startActivity(intent)
         }
 
@@ -62,8 +59,7 @@ class LeagueTeamsFragment : Fragment(R.layout.fragment_league_teams) {
         teamList = LeagueTeamIconsDataSource.createCBLOLDataSet()
     }
 
-    fun receiveData(leagueName : String, userLog : User){
+    fun receiveData(leagueName : String){
         league = leagueName
-        user = userLog
     }
 }

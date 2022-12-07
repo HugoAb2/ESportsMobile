@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.esportsmobile.databinding.ActivityHomeBinding
 import com.example.esportsmobile.model.LeagueIcon
-import com.example.esportsmobile.model.User
 import com.example.esportsmobile.view.LeagueIconAdapter
 
 class HomeActivity : DrawerBaseActivity() {
@@ -16,8 +15,6 @@ class HomeActivity : DrawerBaseActivity() {
     private lateinit var leagueListView : RecyclerView
     private lateinit var leagueIconAdapter : LeagueIconAdapter
 
-    private lateinit var user : User
-
     private var leagueIconList : MutableList<LeagueIcon> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,12 +22,9 @@ class HomeActivity : DrawerBaseActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        user = intent.getSerializableExtra("user") as User
-
-        implementsNavDrawer(user)
+        implementsNavDrawer()
 
         initRecyclerView()
-
 
     }
 
@@ -55,15 +49,14 @@ class HomeActivity : DrawerBaseActivity() {
                 val intent = Intent(this@HomeActivity, LeagueActivity::class.java)
                 val chosenLeague = leagueIconList[position]
                 intent.putExtra("league_name", chosenLeague.name)
-                intent.putExtra("user", user)
                 startActivity(intent)
             }
         })
     }
 
-    private fun implementsNavDrawer(user: User){
+    private fun implementsNavDrawer(){
         allocateActivityTittle("Home")
-        updateNavUser(user)
+        updateNavUser()
     }
 
     private fun addDataToList(){

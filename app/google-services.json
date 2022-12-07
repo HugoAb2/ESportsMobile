@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "336793508975",
+    "project_id": "esportsmobile-6bc23",
+    "storage_bucket": "esportsmobile-6bc23.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:336793508975:android:81f9775b75f2329a6dc19a",
+        "android_client_info": {
+          "package_name": "com.example.esportsmobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "336793508975-ukjb8qq0qkddgaefnpf7njsckh04jd6m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClCpwlmkBm4YMp7WvEYK0qg8fUR_yJMlo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "336793508975-ukjb8qq0qkddgaefnpf7njsckh04jd6m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

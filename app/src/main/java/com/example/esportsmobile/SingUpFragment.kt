@@ -9,8 +9,13 @@ import android.widget.ImageButton
 import android.widget.Toast
 import com.example.esportsmobile.dao.UsersDataSource
 import com.example.esportsmobile.databinding.FragmentSingUpBinding
+import com.example.esportsmobile.model.Comment
 import com.example.esportsmobile.model.User
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.FirebaseNetworkException
+import com.google.firebase.auth.*
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 
 class SingUpFragment : Fragment(R.layout.fragment_sing_up) {
 
@@ -25,12 +30,8 @@ class SingUpFragment : Fragment(R.layout.fragment_sing_up) {
     private lateinit var singUpButton : Button
     private lateinit var googleAccount : ImageButton
 
-    private lateinit var usersList: MutableList<User>
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        usersList = UsersDataSource.createUsersList()
-    }
+    private val auth = FirebaseAuth.getInstance()
+    private val db = FirebaseFirestore.getInstance()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -51,54 +52,83 @@ class SingUpFragment : Fragment(R.layout.fragment_sing_up) {
         super.onResume()
         singUpButton.setOnClickListener{
             if (nullVerifier()){
-                Toast.makeText(requireContext(),newUser().toString(), Toast.LENGTH_SHORT).show()
-                usersList.add(newUser())
+                auth.createUserWithEmailAndPassword(email.text.toString(), password.text.toString())
+                    .addOnCompleteListener {response ->
+                        if (response.isSuccessful){
+                            addUserData()
+                            Toast.makeText(requireContext(), "Success", Toast.LENGTH_SHORT).show()
+                            clearCamps()
+                        }
+                }.addOnFailureListener {exception ->
+                    showErrorMessage(exception)
+                }
             }
         }
     }
 
+    private fun addUserData(){
+        val userMap = hashMapOf(
+            "name" to name.text.toString(),
+            "age" to age.text.toString(),
+            "country" to country.text.toString(),
+            "email" to email.text.toString(),
+            "password" to password.text.toString(),
+            "comments" to ArrayList<String>(),
+            "friends" to ArrayList<String>(),
+            "profile" to null
+        )
+        db.collection("Users").document(auth.currentUser!!.uid).set(userMap)
+    }
+
+    private fun showErrorMessage(exception : Exception){
+        val errorMessage = when(exception){
+            is FirebaseAuthWeakPasswordException -> "Type a password with 6 or more digits"
+            is FirebaseAuthInvalidCredentialsException -> "Type a valid e-mail"
+            is FirebaseAuthUserCollisionException -> "This user was already registered"
+            is FirebaseNetworkException -> "No Internet Connection"
+            else -> "Error"
+        }
+        Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
+    }
+
     private fun nullVerifier(): Boolean{
         if (name.text.isNullOrEmpty()){
-            toastMessage("User name ")
+            toastMessage("User name")
             return false
         }
         if (age.text.isNullOrEmpty()){
-            toastMessage("Age ")
+            toastMessage("Age")
             return false
         }
         if (country.text.isNullOrEmpty()){
-            toastMessage("Country ")
+            toastMessage("Country")
             return false
         }
         if (email.text.isNullOrEmpty()){
-            toastMessage("Email ")
+            toastMessage("Email")
             return false
         }
         if (password.text.isNullOrEmpty()){
-            toastMessage("Password ")
+            toastMessage("Password")
+            return false
+        }
+        if (!thermsConditions.isChecked){
+            toastMessage("Therms and Conditions")
             return false
         }
 
         return true
     }
 
-    private fun newUser(): User {
-        return User(generateID(),
-            name.text.toString(),
-            age.text.toString().toInt(),
-            country.text.toString(),
-            email.text.toString(),
-            password.text.toString(),
-            null
-        )
+    private fun clearCamps(){
+        name.setText("")
+        age.setText("")
+        country.setText("")
+        email.setText("")
+        password.setText("")
     }
 
     private fun toastMessage(input : String){
         Toast.makeText(requireContext(), "$input is empty" , Toast.LENGTH_SHORT).show()
     }
-
-    private fun generateID(): String{
-        return (usersList.size + 1).toString()
-    }
-
 }

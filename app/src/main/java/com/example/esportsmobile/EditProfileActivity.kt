@@ -1,38 +1,35 @@
 package com.example.esportsmobile
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import com.example.esportsmobile.dao.UsersDataSource
 import com.example.esportsmobile.databinding.ActivityEditProfileBinding
-import com.example.esportsmobile.model.User
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.FirebaseFirestore
 
 class EditProfileActivity : AppCompatActivity() {
 
-    companion object {
-        private const val TAG = "editActivity"
-    }
-
     private lateinit var binding : ActivityEditProfileBinding
-    private lateinit var updatedUser : User
+    private lateinit var userID : String
+    private lateinit var userDoc : DocumentReference
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEditProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val userIntent = intent.getStringExtra("user_email") as String
-        Log.d(TAG, "onCreate: $userIntent")
-        updatedUser = receiveUserData(userIntent)
-        Log.d(TAG, "onCreate: $updatedUser")
+        userID = intent.getStringExtra("userID") as String
+        userDoc = FirebaseFirestore.getInstance().collection("Users").document(userID)
+        receiveUserData()
+
     }
 
     override fun onResume() {
         super.onResume()
         binding.apply {
             updateProfile.setOnClickListener {
-                activityResponse(updateUser())
+                updateUser()
+                setResult(RESULT_OK)
                 finish()
             }
             cancelButton.setOnClickListener {
@@ -46,46 +43,32 @@ class EditProfileActivity : AppCompatActivity() {
         }
     }
 
-    private fun activityResponse(user : User){
-        val update = Intent()
-        update.putExtra("user", user)
-        Log.d(TAG, "activityResponse: $user")
-        setResult(RESULT_OK, update)
+
+    private fun updateUser(){
+        userDoc.apply {
+            update("name", binding.nameTxt.text.toString())
+            update("age", binding.age.text.toString())
+            update("country", binding.countryTxt.text.toString())
+            update("email", binding.emailTxt.text.toString())
+            //para redefinir o email implementar criação de novo usuario com o email e deletar o antigo
+            update("password", binding.passwordTxt.text.toString())
+            //para redefinir a senha implementar envio de email
+        }
     }
 
-    private fun updateUser(): User{
-        updatedUser.apply {
-            name = binding.nameTxt.text.toString()
-            profile = binding.profilePic.hashCode()
-            age = binding.age.text.toString().toInt()
-            country = binding.countryTxt.text.toString()
-            email = binding.emailTxt.text.toString()
-            password = binding.passwordTxt.text.toString()
-        }
-        return updatedUser
-    }
-
-    private fun receiveUserData(email : String): User {
-        val user = UsersDataSource.createUsersList().find { it.email == email }
-        binding.apply {
-            if (user != null) {
-                userId.text = user.id
-                nameTxt.setText(user.name)
-                age.setText(user.age.toString())
-                countryTxt.setText(user.country)
-                emailTxt.setText(user.email)
-                passwordTxt.setText(user.password)
-
-                if(user.profile != null) {
-                    profilePic.setImageResource(user.profile!!)
-                }
-            }
-            else{
-                Log.d(TAG, "getUserData: User not found")
-                setResult(RESULT_CANCELED)
+    private fun receiveUserData() {
+        userDoc.addSnapshotListener{user, _ ->
+                binding.apply {
+                    if (user != null) {
+                        userId.text = userID
+                        nameTxt.setText(user.getString("name"))
+                        age.setText(user.getString("age"))
+                        countryTxt.setText(user.getString("country"))
+                        emailTxt.setText(user.getString("email"))
+                        passwordTxt.setText(user.getString("password"))
+                    }
             }
         }
-        return user as User
     }
 
 }

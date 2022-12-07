@@ -14,7 +14,7 @@ import com.example.esportsmobile.model.League
 class LeagueDataFragment : Fragment(R.layout.fragment_league_data) {
 
     companion object{
-        private const val TAG = "resposta"
+        private const val TAG = "LeagueData"
     }
 
     private lateinit var binding : FragmentLeagueDataBinding
