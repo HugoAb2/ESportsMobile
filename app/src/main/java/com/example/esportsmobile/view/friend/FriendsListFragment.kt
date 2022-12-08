@@ -44,7 +44,7 @@ class FriendsListFragment : Fragment(R.layout.fragment_friends_list) {
         friendItemAdapter = FriendItemAdapter(friendsList){
             val friendFragment = FriendFragment()
             val bundle = bundleOf(
-                "friendID" to it.id
+                "userID" to it.id
             )
             friendFragment.arguments = bundle
             parentFragmentManager.beginTransaction().apply {
