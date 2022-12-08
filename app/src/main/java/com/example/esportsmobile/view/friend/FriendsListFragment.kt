@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.esportsmobile.R
@@ -38,9 +39,17 @@ class FriendsListFragment : Fragment(R.layout.fragment_friends_list) {
         setFriendItemListener()
     }
 
+
     private fun setFriendItemListener(){
         friendItemAdapter = FriendItemAdapter(friendsList){
-            Toast.makeText(requireContext(), it.name, Toast.LENGTH_SHORT).show()
+            val friendFragment = FriendFragment()
+            val bundle = bundleOf(
+                "friendID" to it.id
+            )
+            friendFragment.arguments = bundle
+            parentFragmentManager.beginTransaction().apply {
+                replace(R.id.fragment_container, friendFragment).commit()
+            }
         }
 
         friendsListView.adapter = friendItemAdapter

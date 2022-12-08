@@ -9,7 +9,7 @@
 
     <ImageView
         android:layout_marginTop="30dp"
-        android:id="@+id/team_logo"
+        android:id="@+id/profile_pic"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:padding="10dp"
@@ -30,7 +30,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/team_logo"/>
+        app:layout_constraintTop_toBottomOf="@id/profile_pic"/>
 
 
     <LinearLayout
@@ -119,4 +119,13 @@
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_margin="20dp"
+        android:text=""
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dataLayout"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

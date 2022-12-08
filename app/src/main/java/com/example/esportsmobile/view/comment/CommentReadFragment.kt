@@ -1,5 +1,6 @@
 package com.example.esportsmobile.view.comment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
@@ -8,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.esportsmobile.R
 import com.example.esportsmobile.databinding.FragmentReadCommentBinding
+import com.example.esportsmobile.view.friend.FriendActivity
 
 class CommentReadFragment : Fragment(R.layout.fragment_read_comment) {
 
@@ -18,7 +20,6 @@ class CommentReadFragment : Fragment(R.layout.fragment_read_comment) {
     private lateinit var commentTarget : TextView
     private lateinit var commentText : TextView
     private lateinit var backButton : Button
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -46,6 +47,13 @@ class CommentReadFragment : Fragment(R.layout.fragment_read_comment) {
 
     override fun onResume() {
         super.onResume()
+
+        commentAuthor.setOnClickListener{
+            val intent = Intent(requireContext(), FriendActivity::class.java)
+            intent.putExtra("operation", "friend")
+            intent.putExtra("userID", "1")
+            requireActivity().startActivity(intent)
+        }
 
         backButton.setOnClickListener {
             Toast.makeText(requireContext(), "Back", Toast.LENGTH_SHORT).show()

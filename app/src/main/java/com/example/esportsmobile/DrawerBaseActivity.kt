@@ -91,6 +91,7 @@ open class DrawerBaseActivity : AppCompatActivity(), NavigationView.OnNavigation
                 R.id.friends -> {
                     if (findViewById<TextView>(R.id.page_name_indicator).text != "Friends"){
                         val intent = Intent(this, FriendActivity::class.java)
+                        intent.putExtra("operation", "list")
                         startActivity(intent)
                         finish()
                     }
