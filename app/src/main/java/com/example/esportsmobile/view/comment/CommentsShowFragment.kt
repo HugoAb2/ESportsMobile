@@ -1,14 +1,16 @@
-package com.example.esportsmobile
+package com.example.esportsmobile.view.comment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.esportsmobile.R
 import com.example.esportsmobile.databinding.FragmentCommentsShowBinding
 import com.example.esportsmobile.model.Comment
-import com.example.esportsmobile.view.CommentItemAdapter
+import com.example.esportsmobile.logic.adapters.CommentItemAdapter
 
 
 
@@ -30,28 +32,44 @@ class CommentsShowFragment : Fragment(R.layout.fragment_comments_show) {
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentCommentsShowBinding.bind(view)
+        val data = arguments
 
         initRecyclerView()
-        setItemTeamListener()
+        setItemTeamListener(data)
     }
 
-    private fun setItemTeamListener(){
+    private fun setItemTeamListener(data: Bundle?){
         commentItemAdapter = CommentItemAdapter(commentList){
-            val commentReadFragment = CommentReadFragment()
-            val bundle = bundleOf(
-                "id" to it.id,
-                "author" to it.author,
-                "target" to it.target,
-                "text" to it.text
-            )
-            commentReadFragment.arguments = bundle
-            parentFragmentManager.beginTransaction().apply {
-                replace(R.id.fragment_comments, commentReadFragment)
-                    .commit()
+            if (data!!.getBoolean("edit")){
+                editComment(it.id)
+            }else{
+                readComment(it)
             }
         }
 
         commentListView.adapter = commentItemAdapter
+    }
+
+    private fun readComment(comment: Comment){
+        val commentReadFragment = CommentReadFragment()
+        val bundle = bundleOf(
+            "id" to comment.id,
+            "author" to comment.author,
+            "target" to comment.target,
+            "text" to comment.text
+        )
+        commentReadFragment.arguments = bundle
+        parentFragmentManager.beginTransaction().apply {
+            replace(R.id.fragment_comments, commentReadFragment)
+                .commit()
+        }
+    }
+
+    private fun editComment(commentID : String){
+        val intent = Intent(requireContext(), CommentActivity::class.java)
+        intent.putExtra("operation", "update")
+        intent.putExtra("target", commentID)
+        requireActivity().startActivity(intent)
     }
 
     private fun initRecyclerView(){

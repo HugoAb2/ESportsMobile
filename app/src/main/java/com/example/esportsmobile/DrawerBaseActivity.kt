@@ -1,10 +1,7 @@
 package com.example.esportsmobile
 
-import android.Manifest
 import android.app.Activity
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.FrameLayout
@@ -14,9 +11,13 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import com.google.android.gms.location.LocationServices
+import com.example.esportsmobile.view.EditProfileActivity
+import com.example.esportsmobile.view.comment.CommentActivity
+import com.example.esportsmobile.view.friend.FriendActivity
+import com.example.esportsmobile.view.HomeActivity
+import com.example.esportsmobile.view.MainActivity
+import com.example.esportsmobile.view.login.LoginActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth

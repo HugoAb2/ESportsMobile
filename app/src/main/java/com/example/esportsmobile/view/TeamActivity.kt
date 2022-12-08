@@ -1,4 +1,4 @@
-package com.example.esportsmobile
+package com.example.esportsmobile.view
 
 import android.app.Activity
 import android.content.Intent
@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.esportsmobile.dao.TeamDataSource
 import com.example.esportsmobile.databinding.ActivityTeamBinding
 import com.example.esportsmobile.model.Team
+import com.example.esportsmobile.view.comment.CommentActivity
 
 class TeamActivity : AppCompatActivity() {
 

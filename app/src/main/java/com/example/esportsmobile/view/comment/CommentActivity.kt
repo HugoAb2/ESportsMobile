@@ -1,4 +1,4 @@
-package com.example.esportsmobile
+package com.example.esportsmobile.view.comment
 
 
 import android.os.Bundle
@@ -6,6 +6,8 @@ import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
+import com.example.esportsmobile.DrawerBaseActivity
+import com.example.esportsmobile.R
 import com.example.esportsmobile.databinding.ActivityCommentBinding
 
 class CommentActivity : DrawerBaseActivity() {
@@ -34,9 +36,12 @@ class CommentActivity : DrawerBaseActivity() {
                 when(intent.getBooleanExtra("userComments", true)) {
                     true -> {
                         tittle.text = "User Section"
+                        val bundle = bundleOf(
+                            "edit" to true
+                        )
                         supportFragmentManager.commit {
                             setReorderingAllowed(true)
-                            add<CommentsShowFragment>(R.id.fragment_comments)
+                            add<CommentsShowFragment>(R.id.fragment_comments, args = bundle)
                         }
                     }
                     false -> {

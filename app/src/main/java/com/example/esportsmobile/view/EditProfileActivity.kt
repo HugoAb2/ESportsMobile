@@ -1,4 +1,4 @@
-package com.example.esportsmobile
+package com.example.esportsmobile.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

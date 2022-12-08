@@ -1,4 +1,4 @@
-package com.example.esportsmobile
+package com.example.esportsmobile.view.league
 
 import android.os.Bundle
 import android.util.Log
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.ViewGroup
+import com.example.esportsmobile.R
 import com.example.esportsmobile.dao.LeagueDataSource
 import com.example.esportsmobile.databinding.FragmentLeagueDataBinding
 import com.example.esportsmobile.model.League

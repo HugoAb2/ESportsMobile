@@ -1,4 +1,4 @@
-package com.example.esportsmobile
+package com.example.esportsmobile.view.friend
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,10 +6,11 @@ import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.esportsmobile.R
 import com.example.esportsmobile.dao.UsersDataSource
 import com.example.esportsmobile.databinding.FragmentFriendsListBinding
 import com.example.esportsmobile.model.User
-import com.example.esportsmobile.view.FriendItemAdapter
+import com.example.esportsmobile.logic.adapters.FriendItemAdapter
 
 
 class FriendsListFragment : Fragment(R.layout.fragment_friends_list) {

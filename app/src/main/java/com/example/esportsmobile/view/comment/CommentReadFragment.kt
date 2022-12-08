@@ -1,4 +1,4 @@
-package com.example.esportsmobile
+package com.example.esportsmobile.view.comment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import com.example.esportsmobile.R
 import com.example.esportsmobile.databinding.FragmentReadCommentBinding
 
 class CommentReadFragment : Fragment(R.layout.fragment_read_comment) {

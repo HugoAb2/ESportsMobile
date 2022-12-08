@@ -1,4 +1,4 @@
-package com.example.esportsmobile
+package com.example.esportsmobile.view.league
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,10 +6,12 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.esportsmobile.R
+import com.example.esportsmobile.view.TeamActivity
 import com.example.esportsmobile.dao.LeagueTeamIconsDataSource
 import com.example.esportsmobile.databinding.FragmentLeagueTeamsBinding
 import com.example.esportsmobile.model.TeamIcon
-import com.example.esportsmobile.view.TeamItemAdapter
+import com.example.esportsmobile.logic.adapters.TeamItemAdapter
 
 class LeagueTeamsFragment : Fragment(R.layout.fragment_league_teams) {
 

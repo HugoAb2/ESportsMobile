@@ -1,4 +1,4 @@
-package com.example.esportsmobile
+package com.example.esportsmobile.view.comment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import com.example.esportsmobile.R
 import com.example.esportsmobile.databinding.FragmentCommentsAddBinding
 
 class CommentsAddFragment : Fragment(R.layout.fragment_comments_add) {
@@ -28,6 +29,17 @@ class CommentsAddFragment : Fragment(R.layout.fragment_comments_add) {
         commentText = binding.commentText
         addButton = binding.addComment
         cancelButton = binding.cancelComment
+
+        val data = arguments
+        checkOperation(data)
+    }
+
+    private fun checkOperation(data : Bundle?){
+        if (data!!.getString("operation") == "update"){
+            val commentID = data.getString("target")
+            target.text = commentID
+            //firebase
+        }
     }
 
     override fun onResume() {

@@ -1,4 +1,4 @@
-package com.example.esportsmobile
+package com.example.esportsmobile.view.login
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,7 +6,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.esportsmobile.dao.UsersDataSource
 import com.example.esportsmobile.databinding.ActivityLoginBinding
 import com.example.esportsmobile.model.User
-import com.example.esportsmobile.view.PageAdapter
+import com.example.esportsmobile.logic.adapters.PageAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 

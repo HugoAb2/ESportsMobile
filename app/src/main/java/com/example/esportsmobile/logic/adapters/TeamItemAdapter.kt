@@ -1,4 +1,4 @@
-package com.example.esportsmobile.view
+package com.example.esportsmobile.logic.adapters
 
 import com.example.esportsmobile.databinding.ItemTeamBinding
 

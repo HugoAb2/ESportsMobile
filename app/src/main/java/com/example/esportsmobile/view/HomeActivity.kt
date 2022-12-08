@@ -1,12 +1,15 @@
-package com.example.esportsmobile
+package com.example.esportsmobile.view
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.esportsmobile.DrawerBaseActivity
+import com.example.esportsmobile.view.league.LeagueActivity
+import com.example.esportsmobile.R
 import com.example.esportsmobile.databinding.ActivityHomeBinding
 import com.example.esportsmobile.model.LeagueIcon
-import com.example.esportsmobile.view.LeagueIconAdapter
+import com.example.esportsmobile.logic.adapters.LeagueIconAdapter
 
 class HomeActivity : DrawerBaseActivity() {
 

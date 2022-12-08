@@ -1,9 +1,10 @@
-package com.example.esportsmobile
+package com.example.esportsmobile.view.league
 
 import android.os.Bundle
 import androidx.viewpager2.widget.ViewPager2
+import com.example.esportsmobile.DrawerBaseActivity
 import com.example.esportsmobile.databinding.ActivityLeagueBinding
-import com.example.esportsmobile.view.PageAdapter
+import com.example.esportsmobile.logic.adapters.PageAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 

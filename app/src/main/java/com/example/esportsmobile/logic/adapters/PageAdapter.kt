@@ -1,4 +1,4 @@
-package com.example.esportsmobile.view
+package com.example.esportsmobile.logic.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

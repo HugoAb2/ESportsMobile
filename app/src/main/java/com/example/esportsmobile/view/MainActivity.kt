@@ -1,10 +1,11 @@
-package com.example.esportsmobile
+package com.example.esportsmobile.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.example.esportsmobile.databinding.ActivityMainBinding
+import com.example.esportsmobile.view.login.LoginActivity
 
 class MainActivity : AppCompatActivity() {
 

@@ -1,4 +1,4 @@
-package com.example.esportsmobile
+package com.example.esportsmobile.view.login
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,15 +7,12 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.ImageButton
 import android.widget.Toast
-import com.example.esportsmobile.dao.UsersDataSource
+import com.example.esportsmobile.R
 import com.example.esportsmobile.databinding.FragmentSingUpBinding
-import com.example.esportsmobile.model.Comment
-import com.example.esportsmobile.model.User
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.*
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
 
 class SingUpFragment : Fragment(R.layout.fragment_sing_up) {
 

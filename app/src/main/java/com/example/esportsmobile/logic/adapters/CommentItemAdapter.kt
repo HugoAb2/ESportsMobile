@@ -1,4 +1,4 @@
-package com.example.esportsmobile.view
+package com.example.esportsmobile.logic.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
