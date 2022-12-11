@@ -1,7 +1,9 @@
 package com.example.esportsmobile
 
+import android.Manifest
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.view.MenuItem
 import android.view.View
 import android.widget.FrameLayout
@@ -11,6 +13,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.esportsmobile.view.EditProfileActivity
 import com.example.esportsmobile.view.comment.CommentActivity
@@ -121,11 +124,32 @@ open class DrawerBaseActivity : AppCompatActivity(), NavigationView.OnNavigation
                 launcher.launch(intent)
             }
             R.id.place ->{
-                val intent = Intent(this, MapsActivity::class.java)
-                startActivity(intent)
+                requestPermission()
+                if (ActivityCompat.checkSelfPermission(this,
+                        Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+
+                    val intent = Intent(this, MapsActivity::class.java)
+                    startActivity(intent)
+                }
+
             }
         }
         return true
+    }
+
+    private fun requestPermission() {
+
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+
+            return ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 100
+            )
+        }
     }
 
     protected fun updateNavUser(){

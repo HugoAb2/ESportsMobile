@@ -60,7 +60,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        setUpMap()
+        requestPermission()
 
         val quixada = LatLng(-4.913680375031387, -39.03306445243842)
         for (place in locations){
@@ -69,17 +69,17 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.moveCamera(CameraUpdateFactory.newLatLng(quixada))
     }
 
-    private fun setUpMap(){
+    private fun requestPermission(){
 
         if (ActivityCompat.checkSelfPermission(
                 this,
                 Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-            && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
-            != PackageManager.PERMISSION_GRANTED) {
+            ) != PackageManager.PERMISSION_GRANTED ){
 
-            return
+            return ActivityCompat.requestPermissions(this,
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 100)
         }
+
         mMap.isMyLocationEnabled = true
         fusedLocationProviderClient.lastLocation.addOnSuccessListener(this) {location ->
             if (location!=null){
@@ -89,5 +89,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 mMap.animateCamera(CameraUpdateFactory.newLatLng(currentLatLong))
             }
         }
+
     }
 }
