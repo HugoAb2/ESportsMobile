@@ -35,40 +35,16 @@ class CommentActivity : DrawerBaseActivity() {
             "list" -> {
                 when(intent.getBooleanExtra("userComments", true)) {
                     true -> {
-                        tittle.text = "User Section"
-                        val bundle = bundleOf(
-                            "edit" to true
-                        )
-                        supportFragmentManager.commit {
-                            setReorderingAllowed(true)
-                            add<CommentsShowFragment>(R.id.fragment_comments, args = bundle)
-                        }
+                        showUserComments()
                     }
                     false -> {
-                        val target = intent.getStringExtra("target") as String
-                        tittle.text = target
-                        val bundle = bundleOf(
-                            "target" to target
-                        )
-                        supportFragmentManager.commit {
-                            setReorderingAllowed(true)
-                            add<CommentsShowFragment>(R.id.fragment_comments, args = bundle)
-                        }
+                        showTeamComments()
                     }
                 }
             }
 
             "add" -> {
-                val target = intent.getStringExtra("target") as String
-                tittle.text = target
-                val bundle = bundleOf(
-                    "target" to target,
-                    "operation" to operation
-                )
-                supportFragmentManager.commit {
-                    setReorderingAllowed(true)
-                    add<CommentsAddFragment>(R.id.fragment_comments, args = bundle)
-                }
+                addComment(operation)
             }
 
             "update" -> {
@@ -80,14 +56,51 @@ class CommentActivity : DrawerBaseActivity() {
                 )
                 supportFragmentManager.commit {
                     setReorderingAllowed(true)
-                    add<CommentsAddFragment>(R.id.fragment_comments, args = bundle)
+                    add<CommentWriteFragment>(R.id.fragment_comments, args = bundle)
                 }
             }
         }
     }
 
+    private fun showUserComments(){
+        tittle.text = "User Section"
+        val bundle = bundleOf(
+            "edit" to true
+        )
+        supportFragmentManager.commit {
+            setReorderingAllowed(true)
+            add<CommentsListFragment>(R.id.fragment_comments, args = bundle)
+        }
+    }
+
+    private fun showTeamComments(){
+        val target = intent.getStringExtra("target") as String
+        tittle.text = target
+        val bundle = bundleOf(
+            "target" to target
+        )
+        supportFragmentManager.commit {
+            setReorderingAllowed(true)
+            add<CommentsListFragment>(R.id.fragment_comments, args = bundle)
+        }
+    }
+
+    private fun addComment(operation : String){
+        val target = intent.getStringExtra("target") as String
+        tittle.text = target
+        val bundle = bundleOf(
+            "target" to target,
+            "operation" to operation
+        )
+        supportFragmentManager.commit {
+            setReorderingAllowed(true)
+            add<CommentWriteFragment>(R.id.fragment_comments, args = bundle)
+        }
+    }
+
+
     private fun implementsNavDrawer(){
         allocateActivityTittle("Comments")
-        updateNavUser()
+        initNavUser()
     }
 }

@@ -84,5 +84,6 @@
     <string name="target">Target</string>
     <string name="author">Author</string>
     <string name="back">Back</string>
+    <string name="direction">direction</string>
 
 </resources>

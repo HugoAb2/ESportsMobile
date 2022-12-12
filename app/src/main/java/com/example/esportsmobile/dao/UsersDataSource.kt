@@ -11,67 +11,59 @@ class UsersDataSource {
             val list = ArrayList<User>()
 
             list.add(User(
-                "1",
-                "Hugo",
-                24,
+                "U56LDMk6U1cJ01GOzOKbaaaZiMw2",
+                "hugo",
+                "24",
                 "Brazil",
-                "rodrigueshugoab2@gmail.com",
-                "*****",
+                "hugo@gmail.com",
+                "******",
+                ArrayList<String>(),
+                ArrayList<String>(),
                 R.drawable.profile))
 
             list.add(User(
                 "2",
                 "Guilherme",
-                20,
+                "20",
                 "Brazil",
-                "guilherme.sogliato@gmail.com",
-                "*****",
+                "guilherme@gmail.com",
+                "******",
+                ArrayList<String>(),
+                ArrayList<String>(),
                 R.drawable.profile2))
 
             list.add(User(
-                "3",
-                "Guilherme",
-                20,
+                "U7gHrfN7NLPLgvf7FI11Sk8dbvI2",
+                "adm",
+                "99",
                 "Brazil",
-                "guilherme.sogliato@gmail.com",
-                "*****",
-                R.drawable.profile2))
+                "adm@gmail.com",
+                "******",
+                ArrayList<String>(),
+                ArrayList<String>(),
+                R.drawable.ic_baseline_person_24))
 
             list.add(User(
-                "4",
-                "Guilherme",
-                20,
+                "ZSoaglYXh1dWFy5woM2wh22Xezn1",
+                "Professor",
+                "22",
                 "Brazil",
-                "guilherme.sogliato@gmail.com",
-                "*****",
-                R.drawable.profile2))
+                "prof@gmail.com",
+                "******",
+                ArrayList<String>(),
+                ArrayList<String>(),
+                R.drawable.ic_baseline_person_24))
 
             list.add(User(
-                "5",
-                "Guilherme",
-                20,
+                "iocw8FjCDpa2s6ihRACSnfqMWaq2",
+                "natalia",
+                "20",
                 "Brazil",
                 "guilherme.sogliato@gmail.com",
-                "*****",
-                R.drawable.profile2))
-
-            list.add(User(
-                "6",
-                "Guilherme",
-                20,
-                "Brazil",
-                "guilherme.sogliato@gmail.com",
-                "*****",
-                R.drawable.profile2))
-
-            list.add(User(
-                "7",
-                "Guilherme",
-                20,
-                "Brazil",
-                "guilherme.sogliato@gmail.com",
-                "*****",
-                R.drawable.profile2))
+                "******",
+                ArrayList<String>(),
+                ArrayList<String>(),
+                R.drawable.ic_baseline_person_24))
 
             return list
         }

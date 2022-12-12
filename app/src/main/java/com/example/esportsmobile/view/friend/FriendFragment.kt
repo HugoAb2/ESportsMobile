@@ -7,11 +7,13 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.esportsmobile.R
+import com.example.esportsmobile.dao.UsersDataSource
 import com.example.esportsmobile.databinding.FragmentFriendBinding
 
 class FriendFragment : Fragment(R.layout.fragment_friend) {
 
     private lateinit var binding : FragmentFriendBinding
+    private val usersDataSource = UsersDataSource.createUsersList()
 
     private lateinit var profile : ImageView
     private lateinit var friendID : TextView

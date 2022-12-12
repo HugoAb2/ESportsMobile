@@ -4,59 +4,74 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
+import androidx.core.os.bundleOf
 import com.example.esportsmobile.R
-import com.example.esportsmobile.databinding.FragmentReadCommentBinding
+import com.example.esportsmobile.databinding.FragmentCommentReadBinding
 import com.example.esportsmobile.view.friend.FriendActivity
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.FirebaseFirestore
 
-class CommentReadFragment : Fragment(R.layout.fragment_read_comment) {
+class CommentReadFragment : Fragment(R.layout.fragment_comment_read) {
 
-    private lateinit var binding : FragmentReadCommentBinding
+    private lateinit var binding : FragmentCommentReadBinding
 
-    private lateinit var commentID : TextView
-    private lateinit var commentAuthor : TextView
-    private lateinit var commentTarget : TextView
-    private lateinit var commentText : TextView
-    private lateinit var backButton : Button
+    private lateinit var commentDoc : DocumentReference
+
+    private lateinit var data : Bundle
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        data = requireArguments()
+        val commentId = data.getString("id").toString()
+        commentDoc = FirebaseFirestore.getInstance().collection("Comments").document(commentId)
+
+
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding = FragmentReadCommentBinding.bind(view)
+        binding = FragmentCommentReadBinding.bind(view)
 
-        commentID = binding.title
-        commentAuthor = binding.author
-        commentTarget = binding.target
-        commentText = binding.commentText
-        backButton = binding.backButton
+        bundlePageData(data)
 
-        val data = arguments
-        initPageData(data)
+        receiveCommentData()
     }
 
-    private fun initPageData(data : Bundle?){
+    private fun receiveCommentData(){
+        commentDoc.addSnapshotListener{ comment, _ ->
+            binding.apply {
+                if (comment != null){
+                    author.text = comment.getString("author")
+                    target.text = comment.getString("target")
+                    commentText.text = comment.getString("text")
+                }
+            }
+        }
+    }
+
+    private fun bundlePageData(data : Bundle?){
         if (data != null) {
-            commentID.text = data.getString("id")
-            commentAuthor.text = data.getString("author")
-            commentTarget.text = data.getString("target")
-            commentText.text = data.getString("text")
+            binding.title.text = data.get("id").toString()
+            binding.author.text = data.getString("author").toString()
         }
     }
 
     override fun onResume() {
         super.onResume()
 
-        commentAuthor.setOnClickListener{
+        binding.author.setOnClickListener{
             val intent = Intent(requireContext(), FriendActivity::class.java)
             intent.putExtra("operation", "friend")
-            intent.putExtra("userID", "1")
+            intent.putExtra("userID", binding.title.text.toString())
             requireActivity().startActivity(intent)
         }
 
-        backButton.setOnClickListener {
-            Toast.makeText(requireContext(), "Back", Toast.LENGTH_SHORT).show()
+        binding.updateButton.setOnClickListener {
+            val intent = Intent(requireContext(), CommentActivity::class.java)
+            intent.putExtra("operation", "update")
+            intent.putExtra("target", binding.title.text.toString())
         }
     }
 }

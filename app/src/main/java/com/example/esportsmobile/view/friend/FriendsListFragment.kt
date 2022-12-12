@@ -11,7 +11,7 @@ import com.example.esportsmobile.R
 import com.example.esportsmobile.dao.UsersDataSource
 import com.example.esportsmobile.databinding.FragmentFriendsListBinding
 import com.example.esportsmobile.model.User
-import com.example.esportsmobile.logic.adapters.FriendItemAdapter
+import com.example.esportsmobile.adapters.FriendItemAdapter
 
 
 class FriendsListFragment : Fragment(R.layout.fragment_friends_list) {

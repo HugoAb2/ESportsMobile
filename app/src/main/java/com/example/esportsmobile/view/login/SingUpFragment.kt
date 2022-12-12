@@ -9,6 +9,7 @@ import android.widget.ImageButton
 import android.widget.Toast
 import com.example.esportsmobile.R
 import com.example.esportsmobile.databinding.FragmentSingUpBinding
+import com.example.esportsmobile.model.User
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.*
@@ -52,7 +53,7 @@ class SingUpFragment : Fragment(R.layout.fragment_sing_up) {
                 auth.createUserWithEmailAndPassword(email.text.toString(), password.text.toString())
                     .addOnCompleteListener {response ->
                         if (response.isSuccessful){
-                            addUserData()
+                            addUserData(createUserData())
                             Toast.makeText(requireContext(), "Success", Toast.LENGTH_SHORT).show()
                             clearCamps()
                         }
@@ -63,18 +64,32 @@ class SingUpFragment : Fragment(R.layout.fragment_sing_up) {
         }
     }
 
-    private fun addUserData(){
+    private fun createUserData() : User {
+        return User(
+            auth.currentUser!!.uid,
+            name.text.toString(),
+            age.text.toString(),
+            country.text.toString(),
+            email.text.toString(),
+            password.text.toString(),
+            ArrayList<String>(),
+            ArrayList<String>(),
+            null
+            )
+    }
+
+    private fun addUserData(user: User){
         val userMap = hashMapOf(
-            "name" to name.text.toString(),
-            "age" to age.text.toString(),
-            "country" to country.text.toString(),
-            "email" to email.text.toString(),
-            "password" to password.text.toString(),
+            "name" to user.name,
+            "age" to user.age,
+            "country" to user.country,
+            "email" to user.email,
+            "password" to user.password,
             "comments" to ArrayList<String>(),
             "friends" to ArrayList<String>(),
             "profile" to null
         )
-        db.collection("Users").document(auth.currentUser!!.uid).set(userMap)
+        db.collection("Users").document(user.id).set(userMap)
     }
 
     private fun showErrorMessage(exception : Exception){

@@ -45,16 +45,20 @@ class SingInFragment : Fragment(R.layout.fragment_sing_in) {
         super.onResume()
         singinButton.setOnClickListener{
             if (nullVerify()){
-                auth.signInWithEmailAndPassword(email.text.toString(), password.text.toString())
-                    .addOnCompleteListener { authentication ->
-                        if (authentication.isSuccessful){
-                            executeLogin()
-                        }
-                    }.addOnFailureListener { exception ->
-                        throwErrorMessage(exception)
-                    }
+                login(email.text.toString(),password.text.toString())
             }
         }
+    }
+
+    private fun login(email: String, password:String){
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener { authentication ->
+                if (authentication.isSuccessful){
+                    executeLogin()
+                }
+            }.addOnFailureListener { exception ->
+                throwErrorMessage(exception)
+            }
     }
 
     private fun throwErrorMessage(exception: Exception){

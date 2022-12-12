@@ -1,7 +1,6 @@
 package com.example.esportsmobile.view.friend
 
 import android.os.Bundle
-import android.util.Log
 import androidx.core.os.bundleOf
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
@@ -67,6 +66,6 @@ class FriendActivity : DrawerBaseActivity() {
 
     private fun implementsNavDrawer(){
         allocateActivityTittle("Friends")
-        updateNavUser()
+        initNavUser()
     }
 }

@@ -11,7 +11,7 @@ import com.example.esportsmobile.view.TeamActivity
 import com.example.esportsmobile.dao.LeagueTeamIconsDataSource
 import com.example.esportsmobile.databinding.FragmentLeagueTeamsBinding
 import com.example.esportsmobile.model.TeamIcon
-import com.example.esportsmobile.logic.adapters.TeamItemAdapter
+import com.example.esportsmobile.adapters.TeamItemAdapter
 
 class LeagueTeamsFragment : Fragment(R.layout.fragment_league_teams) {
 
