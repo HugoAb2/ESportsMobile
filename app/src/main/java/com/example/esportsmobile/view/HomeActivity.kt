@@ -9,7 +9,7 @@ import com.example.esportsmobile.view.league.LeagueActivity
 import com.example.esportsmobile.R
 import com.example.esportsmobile.databinding.ActivityHomeBinding
 import com.example.esportsmobile.model.LeagueIcon
-import com.example.esportsmobile.logic.adapters.LeagueIconAdapter
+import com.example.esportsmobile.adapters.LeagueIconAdapter
 
 class HomeActivity : DrawerBaseActivity() {
 
@@ -59,7 +59,7 @@ class HomeActivity : DrawerBaseActivity() {
 
     private fun implementsNavDrawer(){
         allocateActivityTittle("Home")
-        updateNavUser()
+        initNavUser()
     }
 
     private fun addDataToList(){

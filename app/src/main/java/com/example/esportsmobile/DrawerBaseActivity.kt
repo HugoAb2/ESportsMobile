@@ -25,6 +25,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
+import com.squareup.picasso.Picasso
 
 open class DrawerBaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
 
@@ -41,7 +43,7 @@ open class DrawerBaseActivity : AppCompatActivity(), NavigationView.OnNavigation
 
     private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
         if(it.resultCode == Activity.RESULT_OK){
-            updateNavUser()
+            Toast.makeText(this, "Changes applied", Toast.LENGTH_SHORT).show()
         }
         if (it.resultCode == Activity.RESULT_CANCELED){
             Toast.makeText(this, "Changes not applied", Toast.LENGTH_SHORT).show()
@@ -152,52 +154,25 @@ open class DrawerBaseActivity : AppCompatActivity(), NavigationView.OnNavigation
         }
     }
 
-    protected fun updateNavUser(){
+    protected fun initNavUser(){
         val header = navViewGlobal.getHeaderView(0)
         db.collection("Users").document(userID).
                 addSnapshotListener{user, _ ->
                     if (user != null){
                         header.apply {
-                            findViewById<ImageView>(R.id.user_profile).setImageResource((R.drawable.ic_baseline_person_24).hashCode())
                             findViewById<TextView>(R.id.user_name).text = user.getString("name")
                             findViewById<TextView>(R.id.user_email).text = user.getString("email")
                         }
                     }
                 }
-    }
-
-    /*protected fun updateNavUser(){
-        val user = FirebaseAuth.getInstance().currentUser
-        val header = navViewGlobal.getHeaderView(0)
-
-        if (user.profile == null){
-            header.findViewById<ImageView>(R.id.user_profile).setImageResource((R.drawable.ic_baseline_person_24).hashCode())
-        }else header.findViewById<ImageView>(R.id.user_profile).setImageResource(user.profile.hashCode())
-
-        header.apply {
-            findViewById<TextView>(R.id.user_name).text = user.name
-            findViewById<TextView>(R.id.user_email).text = user.email
+        FirebaseStorage.getInstance().getReference("profiles/").child(userID).downloadUrl.addOnSuccessListener {
+            Picasso.get().load(it).into(header.findViewById<ImageView>(R.id.user_profile))
         }
     }
-*/
+
     protected fun allocateActivityTittle(activityTittle:String){
         tittle = findViewById(R.id.page_name_indicator)
         tittle.text = activityTittle
     }
 
-    /*
-     private fun bottomNavIndicator(activity : String){
-        when(activity){
-            "Home" -> {
-                findViewById<View>(R.id.home).isActivated = true
-            }
-            "Comments" -> {
-                findViewById<View>(R.id.comments).isActivated = true
-            }
-            "Friends" -> {
-                findViewById<View>(R.id.friends).isActivated = true
-            }
-        }
-    }
-    */
 }
