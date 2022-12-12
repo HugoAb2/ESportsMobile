@@ -31,6 +31,7 @@ class EditProfileActivity : AppCompatActivity() {
     private lateinit var storage : FirebaseStorage
 
     private lateinit var dialog: AlertDialog
+    private var imageChange = false
     private lateinit var mImageURI : Uri
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -80,8 +81,10 @@ class EditProfileActivity : AppCompatActivity() {
 
         fAuth.currentUser?.updatePassword(binding.passwordTxt.text.toString())
 
-        storage.getReference("profiles/$userID").delete()
-        storage.getReference("profiles/$userID").putFile(mImageURI)
+        if (imageChange){
+            storage.getReference("profiles/$userID").delete()
+            storage.getReference("profiles/$userID").putFile(mImageURI)
+        }
     }
 
     private fun receiveUserData() {
@@ -120,6 +123,8 @@ class EditProfileActivity : AppCompatActivity() {
             if(result.data?.data != null) {
                 mImageURI = result.data?.data as Uri
                 binding.profilePic.setImageURI(mImageURI)
+                imageChange = true
+
             }
         }
 
