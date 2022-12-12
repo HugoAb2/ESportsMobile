@@ -16,7 +16,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:id="@+id/user_profile"
-            android:src="@drawable/profile"
+            android:src="@drawable/ic_baseline_person_24"
             android:scaleType="fitXY"
             android:contentDescription="@string/profile_picture"/>
     </androidx.cardview.widget.CardView>

@@ -77,34 +77,32 @@ class EditProfileActivity : AppCompatActivity() {
             update("country", binding.countryTxt.text.toString())
             update("password", binding.passwordTxt.text.toString())
         }
+
         fAuth.currentUser?.updatePassword(binding.passwordTxt.text.toString())
-        if (storage.getReference("profiles/$userID").name == "" ){
-            storage.getReference("profiles/$userID").putFile(mImageURI)
-        }else{
-            storage.getReference("profiles/$userID").delete()
-            storage.getReference("profiles/$userID").putFile(mImageURI)
-        }
+
+        storage.getReference("profiles/$userID").delete()
+        storage.getReference("profiles/$userID").putFile(mImageURI)
     }
 
-        private fun receiveUserData() {
+    private fun receiveUserData() {
 
-            storage.getReference("profiles/").child(userID).downloadUrl.addOnSuccessListener {
-                Picasso.get().load(it).into(binding.profilePic)
-            }
+        storage.getReference("profiles/").child(userID).downloadUrl.addOnSuccessListener {
+            Picasso.get().load(it).into(binding.profilePic)
+        }
 
-            userDoc.addSnapshotListener{user, _ ->
+        userDoc.addSnapshotListener{user, _ ->
 
-                binding.apply {
-                    if (user != null) {
-                        userId.text = userID
-                        nameTxt.setText(user.getString("name"))
-                        age.setText(user.getString("age"))
-                        countryTxt.setText(user.getString("country"))
-                        emailTxt.text = user.getString("email")
-                        passwordTxt.setText(user.getString("password"))
-                    }
+            binding.apply {
+                if (user != null) {
+                    userId.text = userID
+                    nameTxt.setText(user.getString("name"))
+                    age.setText(user.getString("age"))
+                    countryTxt.setText(user.getString("country"))
+                    emailTxt.text = user.getString("email")
+                    passwordTxt.setText(user.getString("password"))
                 }
             }
+        }
     }
 
     private val requestGallery =
